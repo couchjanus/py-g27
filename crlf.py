@@ -1,9 +1,14 @@
-
-
-Сценарий для прямого преобразования окончаний строк Linux/Unix (\n) в окончания строк Windows (\r\n) на месте (без создания дополнительного выходного файла):
-# replacement strings
 WINDOWS_LINE_ENDING = b'\r\n'
 UNIX_LINE_ENDING = b'\n'
+
+def to_lin(file_path):
+  with open(file_path, 'rb') as open_file:
+      content = open_file.read()
+     
+  content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
+
+  with open(file_path, 'wb') as open_file:
+      open_file.write(content)
 
 def to_win(file_path):
   with open(file_path, 'rb') as open_file:
