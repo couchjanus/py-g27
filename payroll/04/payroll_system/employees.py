@@ -1,50 +1,44 @@
-        
+from payroll_system.payroll import (
+    SalaryPolicy,
+    CommissionPolicy,
+    HourlyPolicy
+)
+
+from payroll_system.productivity import (
+    ManagerRole,
+    SecretaryRole,
+    SalesRole,
+    FactoryRole
+)
+     
 class Employee:
     def __init__(self, id, name):
         self.id = id
         self.name = name
+        self.address = None
 
      
-class SalaryEmployee(Employee):
+class Manager(Employee, ManagerRole, SalaryPolicy):
     def __init__(self, id, name, weekly_salary):
+        SalaryPolicy.__init__(self, weekly_salary)
         super().__init__(id, name)
-        self.weekly_salary = weekly_salary
         
-    def calculate_payroll(self):
-        return self.weekly_salary
-
-class HourlyEmployee(Employee):
-    def __init__(self, id, name, hourly_worled, hour_rate):
+class Secretary(Employee, SecretaryRole, SalaryPolicy):
+    def __init__(self, id, name, weekly_salary):
+        SalaryPolicy.__init__(self, weekly_salary)
         super().__init__(id, name)
-        self.hourly_worled = hourly_worled
-        self.hour_rate = hour_rate
         
-    def calculate_payroll(self):
-        return self.hourly_worled * self.hour_rate
-    
-class CommissionEmployee(SalaryEmployee):
+class SalesPerson(Employee, SalesRole, CommissionPolicy):
     def __init__(self, id, name, weekly_salary, commission):
-        super().__init__(id, name, weekly_salary)
-        self.commission = commission
+        CommissionPolicy.__init__(self, weekly_salary, commission)
+        super().__init__(id, name)
         
-    def calculate_payroll(self):
-        fixed = super().calculate_payroll()
-        return fixed + self.commission
-            
-
-class Manager(SalaryEmployee):
-    def work(self, hours):
-        print(f'{self.name} screams and yells for {hours} hours.')
-        
-class Secretary(SalaryEmployee):
-    def work(self, hours):
-        print(f'{self.name} expends {hours} hours doing office paperwork.')
-        
-class SalesPerson(CommissionEmployee):
-    def work(self, hours):
-        print(f'{self.name} expends {hours} hours on the phone.')
-        
-class FactoryWorker(HourlyEmployee):
-    def work(self, hours):
-        print(f'{self.name} manufactures gadgrts for {hours} hours.')
+class FactoryWorker(Employee, FactoryRole, HourlyPolicy):
+    def __init__(self, id, name, hours_worked, hour_rate):
+        HourlyPolicy.__init__(self,  hours_worked, hour_rate)
+        super().__init__(id, name)
           
+class TemporarySecretary(Employee, SecretaryRole, HourlyPolicy):
+    def __init__(self, id, name, hourly_worled, hour_rate):
+        HourlyPolicy.__init__(self, id, name, hourly_worled, hour_rate)
+        super().__init__(id, name)
