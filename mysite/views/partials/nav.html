@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-4 px-lg-4">
+    <div class="container-fluid"><a class="navbar-brand" href="index.html">Peculiar blog</a>
+      <button class="navbar-toggler rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link fw-normal text-uppercase text-dark" href="/">Home</a>
+          </li>
+          <li class="nav-item"><a class="nav-link fw-normal text-uppercase active" href="/blog">Blog</a></li>
+          
+          <li class="nav-item"><a class="nav-link fw-normal text-uppercase text-dark" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link fw-normal text-uppercase text-dark" href="/contact">Contact</a></li>
+        </ul>
+        <ul class="navbar-nav flex-row mb-2 mb-lg-0 ms-lg-5 actions-nav-menu">
+            <li class="nav-item mx-2 mx-lg-0 px-lg-0"><a class="nav-link closeSearch" href="#" onclick="openSearch()">
+              <svg class="svg-icon">
+                <use xlink:href="#find-1"> </use>
+              </svg></a>
+            </li>
+            <li class="nav-item mx-2 mx-lg-0 px-lg-0"><a class="nav-link" href="customer-login.html">
+              <svg class="svg-icon">
+                <use xlink:href="#user-1"> </use>
+              </svg></a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="search-panel d-none" id="searchPanel">
+    <div class="search-panel-inner p-4">
+      <div class="seach-panel-close">
+        <button class="btn btn-primary rounded-0 shadow-0 p-2" id="searchCloseBtn" type="button" onclick="closeSearch()">
+          <svg class="svg-icon text-white mt-1">
+            <use xlink:href="#close-1"> </use>
+          </svg>
+        </button>
+      </div>
+      <form class="w-100" action="#">
+        <div class="row">
+          <div class="col-lg-7 mx-auto">
+            <div class="d-flex align-items-center mb-3 border-bottom">
+              <input class="form-control form-control-lg bg-none border-0 shadow-0 rounded-0 px-0" type="text" placeholder="What are you searching for" aria-describedby="button-addon2">
+              <button class="btn btn-link text-dark shadow-0 px-0 text-decoration-none" id="button-addon2" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

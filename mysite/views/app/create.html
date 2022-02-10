@@ -1,0 +1,43 @@
+{% with title='Admin Dashboard', breadcrumbs={'Dashboard':'/admin', 'New': '/create'}, lead='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
+    {% include "partials/hero.html" %}
+{% endwith %}
+
+<div class="col-xl-9 col-lg-8">
+    <h3>Add New post</h3>
+
+    <form class="needs-validation" novalidate method='POST' action='/store/'>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="title" class="form-label">Post title</label>
+            <input type="text" class="form-control" id="title" placeholder="" name="title" required>
+            
+          </div>
+
+          <div class="col-sm-6">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" placeholder="" name="category" required>
+            
+          </div>
+
+          <div class="col-12">
+            <label for="content" class="form-label">Content</label>
+            <div class="input-group has-validation">
+              <input type="text" class="form-control" placeholder="content" required name="content" id="content">
+            
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Picture</label>
+            <input type="text" class="form-control" placeholder="" name="cover">
+            
+          </div>
+          
+        </div>
+
+        <hr class="my-4">
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Add New Post</button>
+      </form>
+
+</div>

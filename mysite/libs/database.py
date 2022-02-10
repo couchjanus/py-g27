@@ -41,4 +41,9 @@ class Database:
         self.cursor.execute(query)
         row = self.cursor.fetchone()
         return row
+    
+    def delete(self, table, id):
+        query = "DELETE from {0} WHERE id={1};".format(table, id)
+        self.cursor.execute(query)
+        self.conn.commit()
 

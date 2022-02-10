@@ -1,0 +1,37 @@
+{% with title='Admin Dashboard', breadcrumbs={'Dashboard':'/admin'}, lead='Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.' %}
+    {% include "partials/hero.html" %}
+{% endwith %}
+
+<div class="col-xl-9 col-lg-8">
+    <h3>Dashboard Page</h3>
+    <a href="/create">
+    <button type="button" class="btn btn-success">Add new post</button></a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+          <tr>
+            <th scope="row">{{post[0]}}</th>
+            <td>{{post[1]}}</td>
+            <td>{{post[2]}}</td>
+            <td>
+                <form style="display:inline;" method="POST" action="/destroy/">
+                    <input type="hidden" name="id" value="{{post[0]}}">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <button type="button" class="btn btn-warning">Edit</button>
+                
+            </td>
+          </tr>
+
+         {% endfor %}
+        </tbody>
+      </table>
+</div>
